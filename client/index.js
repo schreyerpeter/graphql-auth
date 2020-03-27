@@ -7,6 +7,8 @@ import { Router, hashHistory, Route, IndexRoute } from "react-router";
 import App from "./components/App";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
+import Dashboard from "./components/Dashboard";
+import requireAuth from "./components/requireAuth";
 
 // Make sure we pass along cookies to graphql
 const networkInterface = createNetworkInterface({
@@ -28,6 +30,7 @@ const Root = () => {
         <Route path="/" component={App}>
           <Route path="/login" component={LoginForm}></Route>
           <Route path="/signup" component={SignupForm}></Route>
+          <Route path="/dashboard" component={requireAuth(Dashboard)}></Route>
         </Route>
       </Router>
     </ApolloProvider>
